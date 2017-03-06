@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>	
+	<package name="default" extends="struts-default">
+		<action name="execute" class="utilityWebAciton">
+            <result name="success">index.jsp</result>
+		</action>
+		<action name="hello" class="utilityWebAciton" method="hello">
+            <result name="success">/jsp/hello.jsp</result>
+		</action>
+		<action name="locale" class="utilityWebAciton" method="locale">
+            <result name="success">/jsp/locale.jsp</result>
+		</action>
+		<action name="speed" class="utilityWebAciton" method="speed">
+            <result name="success">/jsp/speed.jsp</result>
+		</action>
+    </package>
+</struts>

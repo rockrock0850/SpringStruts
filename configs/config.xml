@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            				http://www.springframework.org/schema/context 
+            				http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            				http://www.springframework.org/schema/jee 
+            				http://www.springframework.org/schema/jee/spring-jee-3.0.xsd  
+            				http://www.springframework.org/schema/tx 
+            				http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+            				http://www.springframework.org/schema/mvc
+            				http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+							http://www.springframework.org/schema/aop 
+							http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+	<!-- 啟動注解的方式配置bean -->
+	<context:annotation-config />
+	
+	<!-- 啟用自動代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+	<!-- 配置要掃描的套件 -->
+	<context:component-scan base-package="com.utility.web" />
+	
+	<!-- 配置資料庫資料 
+	<context:property-placeholder location="classpath:datasource.properties" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	-->
+	
+	<!-- Spring的資料庫管理機制 
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	-->
+
+	<!-- 使用annotation注解方式配置Transaction -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 部屬mapper定義檔 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mapper.xml" />
+		<property name="mapperLocations" value="classpath*:com/utility/web/**/*Mapper.xml"/>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	-->
+	<!-- 自動掃描mapper interface對應到mapper.xml
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.utility.web.xml.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+	 -->
+</beans>

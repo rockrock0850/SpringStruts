@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration > 
+<!--jar檔路徑***** -->
+  <!--  <classPathEntry location="/Users/shane/Documents/workspace/DISAPPAP/WebContent/WEB-INF/lib/mysql-connector-java-5.1.35-bin.jar" /> -->
+  <classPathEntry location="D:\eclipse-mars\workspace\UtilityWeb\WebContent\WEB-INF\lib\mysql-connector-java-5.1.34.jar" />
+<!--************ -->
+<!--資料路類型、資料庫url、使用者名稱、密碼***** -->
+  <context id="context1" >
+<!--     <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://172.22.131.80:1433;DatabaseName=DISDEVSQL" userId="disadm" password="0908@tstar" /> -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/dev_money_boss_sociality_system" userId="root" password="everywhere" />
+<!--******************************** -->
+<!--package名稱、專案名稱***** -->
+    <javaModelGenerator targetPackage="com.play.java.web.model" targetProject="UtilityWeb" />
+    <sqlMapGenerator targetPackage="com.play.java.web.mapper" targetProject="UtilityWeb" />
+    <javaClientGenerator targetPackage="com.play.java.web.xml.mapper" targetProject="UtilityWeb" type="XMLMAPPER" />
+<!--********************* -->
+<!--資料表名稱***** -->
+    <table schema="" tableName="b_class_relationship" >
+<!--         此欄位使用自動增加的型態，不需要加入到SQL語法 -->
+        <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    <table schema="" tableName="b_contacts_data" >
+<!--         此欄位使用自動增加的型態，不需要加入到SQL語法 -->
+        <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    <table schema="" tableName="b_personal_data" >
+<!--         此欄位使用自動增加的型態，不需要加入到SQL語法 -->
+        <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    <table schema="" tableName="b_property_data" >
+<!--         此欄位使用自動增加的型態，不需要加入到SQL語法 -->
+        <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    <table schema="" tableName="b_status_data" >
+<!--         此欄位使用自動增加的型態，不需要加入到SQL語法 -->
+        <generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+<!-- ********** -->
+  </context>
+</generatorConfiguration>

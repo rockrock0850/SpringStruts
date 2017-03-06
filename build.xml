@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="clean" name="PlayJavaWeb">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    
+    <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
+        <pathelement location="../../../apache-tomcat-7.0.47/lib/*.jar"/>
+    </path>
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}workspace/PlayJavaWeb/WebContent/WEB-INF/lib/*.jar"/>
+    </path>
+    <path id="this.classpath">
+        <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+    </path>
+    
+    <target name="clean">
+        <delete dir="WebContent/WEB-INF/classes"/>
+    </target>
+    <target depends="clean" name="compile">
+        <mkdir dir="build/classes" />
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="properties"/>
+            <src path="config"/>
+            <classpath refid="this.classpath"/>
+        </javac>
+    </target>
+    <target depends="compile" name="uat">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+		<mkdir dir="WebContent/WEB-INF/classes" />
+		<copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+		    <fileset dir="build/classes">
+				<include name="**/*.*"/>
+			</fileset>
+			<globmapper from="*-uat.properties" to="*.properties"/>
+		</copy>
+		<copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+		    <fileset dir="build/classes">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+        <jar destfile="${ant.project.name}-uat.war">
+		    <zipfileset dir="WebContent/">
+		        <include name="**/*.*" />
+		        <exclude name="**/*.war" />
+		    </zipfileset>
+		</jar>
+		<move file="${ant.project.name}-uat.war" todir="C:\Users\rd21\Desktop" />
+    </target>
+    <target depends="compile" name="ga">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+		<mkdir dir="WebContent/WEB-INF/classes" />
+		<copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+		    <fileset dir="build/classes">
+				<include name="**/*.*"/>
+			</fileset>
+			<globmapper from="*-ga.properties" to="*.properties"/>
+		</copy>
+		<copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+		    <fileset dir="build/classes">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+        <jar destfile="${ant.project.name}-ga.war">
+		    <zipfileset dir="WebContent/">
+		        <include name="**/*.*" />
+		        <exclude name="**/*.war" />
+		    </zipfileset>
+		</jar>
+		<move file="${ant.project.name}-ga.war" todir="C:\Users\rd21\Desktop" />
+    </target>
+</project>
